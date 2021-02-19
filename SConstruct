@@ -28,9 +28,7 @@ def godot_binary_converter(val, env):
     if match:
         major, minor, patch, extra = match.groups()
     else:
-        raise UserError(
-            f"`{val}` is neither an existing file nor a valid <major>.<minor>.<patch>[-<extra>] Godot version format"
-        )
+        raise UserError(f"{repr(val)} is neither an existing file nor a valid <major>.<minor>.<patch>[-<extra>] Godot version format")
     env["godot_binary_download_version"] = (major, minor, patch, extra or "stable")
     # `godot_binary` is set to None to indicate it should be downloaded
     return None
